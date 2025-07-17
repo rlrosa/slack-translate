@@ -11,11 +11,11 @@ logging.basicConfig(level=logging.INFO)
 # now logging for my app
 if os.environ.get("FLASK_DEBUG"):
     level=logging.DEBUG
+    logger.info(f'Log level: {level}')
 else:
     level=logging.INFO
 logger = logging.getLogger("TranslateBot")
 logger.setLevel(level)
-logger.info(f'Log level: {level}')
 
 app = Flask(__name__)
 
