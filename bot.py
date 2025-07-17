@@ -9,7 +9,9 @@ import re
 # logging for all modules
 logging.basicConfig(level=logging.INFO)
 # now logging for my app
+_debug = False
 if os.environ.get("FLASK_DEBUG"):
+    _debug = True
     level=logging.DEBUG
     logger.info(f'Log level: {level}')
 else:
@@ -103,7 +105,7 @@ def slack_events():
 
         # Format the message
         formatted_message = ''
-        if len(text) < 50:
+        if _debug:
             formatted_message += f"*Original:*\n{text}\n\n"
         formatted_message += f"*Translation:*\n{final_text}"
 
